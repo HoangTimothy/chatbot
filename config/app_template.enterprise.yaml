@@ -1,0 +1,29 @@
+template_name: enterprise_rag_default
+template_version: 0.1.0
+
+product_mode: fixed_enterprise_template
+
+features:
+  auth: true
+  workspaces: true
+  document_upload: true
+  ingestion_jobs: true
+  hierarchical_routing: true
+  hybrid_search: true
+  reranking: true
+  citations: true
+  retrieval_trace: true
+  admin_dashboard: true
+
+retrieval:
+  max_keyword_candidates: 30
+  max_vector_candidates: 30
+  max_reranked_chunks: 5
+  max_context_tokens: 3200
+  low_route_confidence_policy: search_parent_branch
+
+generation:
+  refusal_message: "I cannot find sufficient information in the knowledge base."
+  require_citations: true
+  allow_creative_answering: false
+

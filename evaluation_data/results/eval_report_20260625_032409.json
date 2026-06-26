@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "dataset": "evaluation_data/golden_qa.jsonl",
+    "sample_count": 5,
+    "tiers": [
+      1
+    ],
+    "timestamp": "20260625_032409"
+  },
+  "aggregated_scores": {
+    "tier1_retrieval": {
+      "avg_hit_rate": 0.0,
+      "avg_mrr": 0.0,
+      "avg_ndcg": 0.0,
+      "avg_precision": 0.0,
+      "avg_retrieval_latency_ms": 3328.3631639991654
+    },
+    "tier1_generation": {
+      "avg_bleu": 0.0,
+      "avg_rouge_l": 0.0,
+      "avg_token_f1": 0.0,
+      "avg_citation_accuracy": 1.0,
+      "avg_refusal_accuracy": 0.2,
+      "avg_answer_tokens": 9.0,
+      "avg_generation_latency_ms": 2218.9087759994436
+    }
+  },
+  "per_sample": [
+    {
+      "question": "Công ty Phượng Hải hoạt động trong lĩnh vực gì?",
+      "reference_answer": "Công ty Cổ phần KHKT Phượng Hải hoạt động trong lĩnh vực kỹ thuật và khoa học, cung cấp các giải pháp công nghệ và thiết bị cho doanh nghiệp.",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 2942.0943000004627,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 1961.3962000003085
+      }
+    },
+    {
+      "question": "Quy trình xử lý nước thải của công ty bao gồm những bước nào?",
+      "reference_answer": "Quy trình xử lý nước thải bao gồm các bước: tiền xử lý (lọc rác), xử lý sinh học (bể aerotank), lắng thứ cấp, khử trùng và xả ra môi trường theo tiêu chuẩn QCVN.",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 3064.7962199975154,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 2043.1974799983436
+      }
+    },
+    {
+      "question": "What are the company's main product lines?",
+      "reference_answer": "Phuong Hai JSC provides water treatment equipment, environmental monitoring systems, and industrial automation solutions for enterprises across Vietnam.",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 2763.193620000675,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 1842.12908000045
+      }
+    },
+    {
+      "question": "Giá sản phẩm ABC model X năm 2025 là bao nhiêu?",
+      "reference_answer": "",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 3470.527019997826,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 1,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 2313.6846799985506
+      }
+    },
+    {
+      "question": "Chính sách nghỉ phép năm của nhân viên là gì?",
+      "reference_answer": "Nhân viên chính thức được nghỉ phép 12 ngày/năm theo quy định của Bộ luật Lao động. Nhân viên có thâm niên trên 5 năm được cộng thêm 1 ngày/năm.",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 4401.204659999348,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 2934.1364399995655
+      }
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "dataset": "evaluation_data/golden_qa.jsonl",
+    "sample_count": 5,
+    "tiers": [
+      1
+    ],
+    "timestamp": "20260625_072319"
+  },
+  "aggregated_scores": {
+    "tier1_retrieval": {
+      "avg_hit_rate": 0.0,
+      "avg_mrr": 0.0,
+      "avg_ndcg": 0.0,
+      "avg_precision": 0.0,
+      "avg_retrieval_latency_ms": 2702.238035999999
+    },
+    "tier1_generation": {
+      "avg_bleu": 0.034268153352480166,
+      "avg_rouge_l": 0.08122917437985933,
+      "avg_token_f1": 0.09503968253968255,
+      "avg_citation_accuracy": 1.0,
+      "avg_refusal_accuracy": 0.4,
+      "avg_answer_tokens": 78.2,
+      "avg_generation_latency_ms": 1801.4920239999992
+    }
+  },
+  "per_sample": [
+    {
+      "question": "Công ty Phượng Hải hoạt động trong lĩnh vực gì?",
+      "reference_answer": "Công ty Cổ phần KHKT Phượng Hải hoạt động trong lĩnh vực kỹ thuật và khoa học, cung cấp các giải pháp công nghệ và thiết bị cho doanh nghiệp.",
+      "generated_answer": "Công ty Cổ phần KHKT Phượng Hải (**Phượng Hải JSC**) là chuyên gia trong hai lĩnh vực chính:\n\n- **Sản xuất Nội thất và Thiết bị Phòng thí nghiệm** với thương hiệu **BestLab®**.\n- **Sản xuất Thiết bị Quan trắc Môi trường** với thương hiệu **SmartpH®**.",
+      "retrieved_chunk_ids": [
+        "9eaf5e26-6ac9-4c0e-ac47-1f2babdf37c5",
+        "fee53c5b-db25-45fd-8722-ac5dda1987ae",
+        "bb993b2f-c4ce-4f8d-a20e-af6d20acb39f",
+        "9a7e005e-1bd8-4d15-a527-ea7d189245ce",
+        "b9ade87c-966d-466d-aed7-bad77c114f89"
+      ],
+      "generated_citations": [
+        "9a7e005e-1bd8-4d15-a527-ea7d189245ce"
+      ],
+      "predicted_insufficient": false,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 2838.0679199998667,
+        "generation_bleu": 0.17134076676240084,
+        "generation_rouge_l": 0.3513513513513514,
+        "generation_token_f1": 0.41269841269841273,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 1,
+        "generation_answer_tokens": 44.0,
+        "generation_latency_ms": 1892.0452799999111
+      }
+    },
+    {
+      "question": "Quy trình xử lý nước thải của công ty bao gồm những bước nào?",
+      "reference_answer": "Quy trình xử lý nước thải bao gồm các bước: tiền xử lý (lọc rác), xử lý sinh học (bể aerotank), lắng thứ cấp, khử trùng và xả ra môi trường theo tiêu chuẩn QCVN.",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [
+        "20b8d8b1-43b3-4c8e-a3c4-9ef263ae31dc",
+        "9cb6b6bc-97e8-401b-8f8b-1624cbf78a61",
+        "b9ade87c-966d-466d-aed7-bad77c114f89",
+        "75d9a254-539e-4776-ab8e-4a9584d009c0",
+        "244c8cee-9445-4c41-b98b-bf8f325c4bff"
+      ],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 2856.824400000096,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 1904.549600000064
+      }
+    },
+    {
+      "question": "What are the company's main product lines?",
+      "reference_answer": "Phuong Hai JSC provides water treatment equipment, environmental monitoring systems, and industrial automation solutions for enterprises across Vietnam.",
+      "generated_answer": "Based on the provided information, **Phượng Hải JSC** manufactures **fume hoods** (\"Tủ hút\"). These fume hoods meet several standards, including:\n\n*   **BS EN 14175-3:2003**, certified by Quatest 3.\n*   Designed and tested according to **ANSI ASHRAE-110:1995** (U.S. standard).\n\nThe manufacturer also adheres to **ISO 9001:2015**, **ISO 14001**, and **ISO 45001** standards.",
+      "retrieved_chunk_ids": [
+        "chunk-chat-finance-01",
+        "d7f287a7-3881-4095-a762-dd77f6b75a9f",
+        "5016b87b-0265-47c6-9b03-0f39624addbb",
+        "7aafeba8-9c73-4f33-be36-733b943c3f37",
+        "e98f3dca-95a7-4c07-bdb4-3d4150d4edfb"
+      ],
+      "generated_citations": [
+        "5016b87b-0265-47c6-9b03-0f39624addbb",
+        "7aafeba8-9c73-4f33-be36-733b943c3f37",
+        "e98f3dca-95a7-4c07-bdb4-3d4150d4edfb"
+      ],
+      "predicted_insufficient": false,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 5391.117180000128,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0547945205479452,
+        "generation_token_f1": 0.0625,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 1,
+        "generation_answer_tokens": 55.0,
+        "generation_latency_ms": 3594.0781200000856
+      }
+    },
+    {
+      "question": "Giá sản phẩm ABC model X năm 2025 là bao nhiêu?",
+      "reference_answer": "",
+      "generated_answer": "**📄 phuonghai (1).pdf**\n\nChúng  tôi  nhận  thức  rất  rõ  chất  lượng  sản  phẩm  là  điều  kiện  tiên  quyết  để  công  ty  tồn  tại  và phát\n\ntriển,\n\nđược\n\nthể\n\nhiện\n\nqua\n\nslogan:\n\n“  A  Pioneer  of  High  quality!”  (Nhà  tiên  phong  về  chất  lượng  cao)    Giá  trị  cốt  lõi  này  bao  trùm  lên  cách  chúng  tôi  suy  nghĩ,  cách  xây  dựng  ý  tưởng  và  hành động\n\ndựa\n\ntrên\n\nnăng\n\nlực\n\ncốt\n\nlõi\n\ncủa\n\nchúng\n\ntôi\n\nthông\n\nqua\n\ncác\n\nhoạt\n\nđộng\n\nkinh\n\ndoanh,\n\nnghiên\n\ncứu\n\nsản\n\nphẩm\n\ncông\n\nnghệ\n\nmới\n\nvà\n\nphát\n\ntriển\n\nnăng\n\nlực\n\nthành\n\nviên.\n\n---\n\n-  Thái  độ  thờ  ơ  không  quan  tâm  đến  thắc  mắc  của  khách  hàng.\n-  Hứa  với  khách  sẽ  trả  lời  sau  nhưng  không  bao  giờ  thực  hiện.\n5.\nKhách  hàng  đang  băn  khoăn  về  giá Cách  xử  lý  tình  huống:\n-  Trước  hết,  cần  phải  tìm  hiểu  được  nguyên  nhân  khách  hàng  thắc  mắc  về  giá  thành  sản  \nphẩm.\n-  Sau  đó  hãy  từ  tốn  giải  thích  cho  họ  hiểu  vì  sao  lại  có  sự  chênh  lệch  này.\n-  Nêu  ra  điểm  mạnh  của  sản  phẩm  mà  đối  thủ  không  có  được,  khéo  léo  cho  họ  thấy  mức  giá  \ncủa\n\nmình\n\nlà\n\nhoàn\n\ntoàn\n\nhợp\n\nlý.\n\n---\n\n-Kích  thước  trong:  395x346x395  DxRxC   -Nguồn:230VAC/  400W  Cung  cấp  kèm  theo:  -02  khay   -Sách  HDSD        Tủ  lạnh  lưu  mẫu  (Lab  Refrigerator)    Phuonghai  sản  xuất  Model  BL-CSC130  -Tủ  lạnh  phòng  thí  nghiệm  là  thiết  bị  làm  lạnh  chuyên  dụng  để  bảo  quản  lạnh  dược  phẩm cũng\n\nnhư\n\ncác\n\nsản\n\nphẩm\n\nsinh\n\nhọc…\n\nThiết\n\nbị\n\nphù\n\nhợp\n\ncho\n\nbệnh\n\nviện,\n\nnhà\n\nthuốc,\n\nnhà\n\nmáy\n\ndược\n\nphẩm,\n\nvệ\n\nsinh\n\ndịch\n\ntễ\n\nvà\n\nphòng\n\nchống\n\nsốt\n\nrét\n\nvà\n\nphòng\n\nkhám.",
+      "retrieved_chunk_ids": [
+        "0e43427a-004f-4f28-8587-16c3ad5dd267",
+        "c4ac2b6b-cbad-4efa-851b-84b9cf33173b",
+        "019d2217-5fe1-4cc3-a973-68290fcd51fd",
+        "77ca4c9c-f216-48a2-a5cf-ae06f5de5452",
+        "5578101f-29ed-49a9-a8c7-53a7da020110"
+      ],
+      "generated_citations": [
+        "0e43427a-004f-4f28-8587-16c3ad5dd267",
+        "c4ac2b6b-cbad-4efa-851b-84b9cf33173b",
+        "019d2217-5fe1-4cc3-a973-68290fcd51fd"
+      ],
+      "predicted_insufficient": false,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 259.0906200000063,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 274.0,
+        "generation_latency_ms": 172.7270800000042
+      }
+    },
+    {
+      "question": "Chính sách nghỉ phép năm của nhân viên là gì?",
+      "reference_answer": "Nhân viên chính thức được nghỉ phép 12 ngày/năm theo quy định của Bộ luật Lao động. Nhân viên có thâm niên trên 5 năm được cộng thêm 1 ngày/năm.",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [
+        "d7f287a7-3881-4095-a762-dd77f6b75a9f",
+        "e46d0725-1413-4951-9de9-e29dcb7b93f4",
+        "a179ee50-5118-4d92-9070-c7236a34a006",
+        "a4e1cb40-44d4-44f6-a53e-84e8395d7189",
+        "f39cc10f-5d7b-4693-afb1-218cf06d8d1d"
+      ],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 2166.0900599998968,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 1444.0600399999312
+      }
+    }
+  ]
+}

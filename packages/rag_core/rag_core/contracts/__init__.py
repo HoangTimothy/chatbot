@@ -1,0 +1,2 @@
+"""Shared RAG contracts."""
+

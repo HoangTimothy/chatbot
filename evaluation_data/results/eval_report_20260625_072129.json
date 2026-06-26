@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "dataset": "evaluation_data/golden_qa.jsonl",
+    "sample_count": 5,
+    "tiers": [
+      1
+    ],
+    "timestamp": "20260625_072129"
+  },
+  "aggregated_scores": {
+    "tier1_retrieval": {
+      "avg_hit_rate": 0.0,
+      "avg_mrr": 0.0,
+      "avg_ndcg": 0.0,
+      "avg_precision": 0.0,
+      "avg_retrieval_latency_ms": 7029.906191999998
+    },
+    "tier1_generation": {
+      "avg_bleu": 0.03562541128066903,
+      "avg_rouge_l": 0.08946745562130179,
+      "avg_token_f1": 0.11447538860103627,
+      "avg_citation_accuracy": 1.0,
+      "avg_refusal_accuracy": 0.8,
+      "avg_answer_tokens": 96.8,
+      "avg_generation_latency_ms": 4686.604127999999
+    }
+  },
+  "per_sample": [
+    {
+      "question": "Công ty Phượng Hải hoạt động trong lĩnh vực gì?",
+      "reference_answer": "Công ty Cổ phần KHKT Phượng Hải hoạt động trong lĩnh vực kỹ thuật và khoa học, cung cấp các giải pháp công nghệ và thiết bị cho doanh nghiệp.",
+      "generated_answer": "Công ty Cổ Phần KHKT Phượng Hải (Phượng Hải JSC) hoạt động chủ yếu trong hai lĩnh vực chính:\n\n- **Sản xuất Nội Thất và Thiết Bị Phòng Thí Nghiệm** với thương hiệu **BestLab®**.\n- **Sản xuất Thiết Bị Quan Trắc Môi Trường** với thương hiệu **SmartpH®**.",
+      "retrieved_chunk_ids": [
+        "9eaf5e26-6ac9-4c0e-ac47-1f2babdf37c5",
+        "fee53c5b-db25-45fd-8722-ac5dda1987ae",
+        "bb993b2f-c4ce-4f8d-a20e-af6d20acb39f",
+        "9a7e005e-1bd8-4d15-a527-ea7d189245ce",
+        "b9ade87c-966d-466d-aed7-bad77c114f89"
+      ],
+      "generated_citations": [
+        "9a7e005e-1bd8-4d15-a527-ea7d189245ce"
+      ],
+      "predicted_insufficient": false,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 6777.54330000007,
+        "generation_bleu": 0.17812705640334517,
+        "generation_rouge_l": 0.4,
+        "generation_token_f1": 0.46875000000000006,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 1,
+        "generation_answer_tokens": 45.0,
+        "generation_latency_ms": 4518.362200000047
+      }
+    },
+    {
+      "question": "Quy trình xử lý nước thải của công ty bao gồm những bước nào?",
+      "reference_answer": "Quy trình xử lý nước thải bao gồm các bước: tiền xử lý (lọc rác), xử lý sinh học (bể aerotank), lắng thứ cấp, khử trùng và xả ra môi trường theo tiêu chuẩn QCVN.",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [
+        "20b8d8b1-43b3-4c8e-a3c4-9ef263ae31dc",
+        "9cb6b6bc-97e8-401b-8f8b-1624cbf78a61",
+        "b9ade87c-966d-466d-aed7-bad77c114f89",
+        "75d9a254-539e-4776-ab8e-4a9584d009c0",
+        "244c8cee-9445-4c41-b98b-bf8f325c4bff"
+      ],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 9017.196660000081,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 0,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 6011.464440000054
+      }
+    },
+    {
+      "question": "What are the company's main product lines?",
+      "reference_answer": "Phuong Hai JSC provides water treatment equipment, environmental monitoring systems, and industrial automation solutions for enterprises across Vietnam.",
+      "generated_answer": "Dựa trên thông tin được cung cấp, một trong những dòng sản phẩm chính của Công ty Cổ phần KHKT Phượng Hải là **tủ hút**.\n\nCác tủ hút do Phượng Hải sản xuất đạt các tiêu chuẩn như:\n- Tiêu chuẩn **BS EN 14175-3:2003** do Quatest 3 cấp.\n- Được thiết kế và kiểm tra tại xưởng theo tiêu chuẩn Mỹ **ANSI ASHRAE-110: 1995**.\n- Tốc độ gió qua cửa hút có thể cài đặt từ **0,4-0,9 m/s**.\n- Được lắp đặt bộ điều khiển vi xử lý **Bestlaber™** giúp hoạt động tự động và ít bảo trì.\n\nNhà sản xuất cũng đạt các tiêu chuẩn **ISO 9001:2015**, **14001**, và **45001**.",
+      "retrieved_chunk_ids": [
+        "chunk-chat-finance-01",
+        "d7f287a7-3881-4095-a762-dd77f6b75a9f",
+        "5016b87b-0265-47c6-9b03-0f39624addbb",
+        "7aafeba8-9c73-4f33-be36-733b943c3f37",
+        "e98f3dca-95a7-4c07-bdb4-3d4150d4edfb"
+      ],
+      "generated_citations": [
+        "5016b87b-0265-47c6-9b03-0f39624addbb",
+        "7aafeba8-9c73-4f33-be36-733b943c3f37",
+        "e98f3dca-95a7-4c07-bdb4-3d4150d4edfb"
+      ],
+      "predicted_insufficient": false,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 7501.277039999968,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 1,
+        "generation_answer_tokens": 115.0,
+        "generation_latency_ms": 5000.851359999979
+      }
+    },
+    {
+      "question": "Giá sản phẩm ABC model X năm 2025 là bao nhiêu?",
+      "reference_answer": "",
+      "generated_answer": "I cannot find sufficient information in the knowledge base.",
+      "retrieved_chunk_ids": [
+        "0e43427a-004f-4f28-8587-16c3ad5dd267",
+        "c4ac2b6b-cbad-4efa-851b-84b9cf33173b",
+        "019d2217-5fe1-4cc3-a973-68290fcd51fd",
+        "77ca4c9c-f216-48a2-a5cf-ae06f5de5452",
+        "5578101f-29ed-49a9-a8c7-53a7da020110"
+      ],
+      "generated_citations": [],
+      "predicted_insufficient": true,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 5574.876119999772,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.0,
+        "generation_token_f1": 0.0,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 1,
+        "generation_answer_tokens": 9.0,
+        "generation_latency_ms": 3716.5840799998477
+      }
+    },
+    {
+      "question": "Chính sách nghỉ phép năm của nhân viên là gì?",
+      "reference_answer": "Nhân viên chính thức được nghỉ phép 12 ngày/năm theo quy định của Bộ luật Lao động. Nhân viên có thâm niên trên 5 năm được cộng thêm 1 ngày/năm.",
+      "generated_answer": "**📄 phuonghai (1).pdf**\n\n●  Cử  nhân  viên  đến  xử  lý  lập  tức  \n●  Hướng  dẫn  cách  khắc  phục  nếu  lỗi  đơn  giản  khách  hàng  có  thể  xử  lý  \n7.\nTình  huống:  Khách  hàng  khen  ngợi  dịch  vụ/  nhân  viên  công  ty Ví  dụ:  Khách  hàng  hài  lòng  và  dành  lời  khen  cho  công  ty/nhân  viên  hoặc  dịch  vụ Cách  xử  lý:\n✔  Cảm  ơn  khách  hàng  chân  thành.\n✔  Duy  trì  thái  độ  thân  thiện,  tích  cực..\n✔  Nếu  công  ty  có  chương  trình  tri  ân,  có  thể  mời  khách  hàng  tham  gia.\n8.\nKhách  hàng  hỏi  về  chính  sách  sau  bảo  hành Ví  dụ:  Khi  đơn  hàng  hết  hạn  bảo  hành  thì  công  ty  có  chương  trình  hay  chính  sách  gì?\n\n---\n\n4  :  Giám  sát  công  trình,  nhân  viên  trong  phòng  thí  nghiệm  ,  không  phải  người  có  trách nhiệm\n\nquyết\n\nđịnh\n\n…:\n\nTụi\n\nem\n\nlàm\n\nthế\n\nnày\n\nkhông\n\nđúng\n\n,\n\nphải\n\ndùng\n\ncái\n\nnày\n\n,\n\nlàm\n\nnhư\n\nthế\n\nnày\n\ncho\n\nanh:\n\nDạ  đây  là  thiết  kế  của  bên  em  ,  với  các  vấn  đề  của  anh  nói  thì  nó  ảnh  hưởng  đến  vấn  đề nghiệm\n\nthu\n\nsau\n\nnày\n\n,\n\nvì\n\nbên\n\nem\n\nlàm\n\ntheo\n\nhđ\n\nđã\n\ncung\n\ncấp\n\n.\n\n---\n\nKhách  hàng  hỏi  về  các  biện  pháp  phòng  ngừa  rủi  ro  thi  công:\n●  Câu  hỏi:  \"Các  biện  pháp  phòng  ngừa  rủi  ro  trong  quá  trình  thi  công  là  gì?\"  \nCâu  trả  lời:  \"Chúng  tôi  thực  hiện  đánh  giá  rủi  ro  và  có  kế  hoạch  dự  phòng  cho  mọi  tình huống. Mọi\n\ncông\n\nđoạn\n\nthi\n\ncông\n\nđều\n\ncó\n\nbiện\n\npháp\n\nbảo\n\nvệ\n\nan\n\ntoàn\n\nlao\n\nđộng\n\nvà\n\nbảo\n\nvệ\n\nmôi\n\ntrường.\"\n\nTÌNH  HUỐNG  PHÒNG  CƠ  KHÍ\n1.\nHàng  đến  tay  khách  hàng  bị  lỗi Cách  xử  lý  tình  huống:\n-   Tìm  hiểu  cụ  thể  nguyên  nhân  tại  sao  sản  phẩm  bị  lỗi,  lỗi  là  do  khâu  nào?\nKhâu  đóng  hàng của\n\nmình,\n\nkhâu\n\nvận\n\nchuyển\n\nhay\n\ndo\n\nkhách\n\nhàng?",
+      "retrieved_chunk_ids": [
+        "d7f287a7-3881-4095-a762-dd77f6b75a9f",
+        "e46d0725-1413-4951-9de9-e29dcb7b93f4",
+        "a179ee50-5118-4d92-9070-c7236a34a006",
+        "a4e1cb40-44d4-44f6-a53e-84e8395d7189",
+        "f39cc10f-5d7b-4693-afb1-218cf06d8d1d"
+      ],
+      "generated_citations": [
+        "a179ee50-5118-4d92-9070-c7236a34a006",
+        "e46d0725-1413-4951-9de9-e29dcb7b93f4",
+        "a4e1cb40-44d4-44f6-a53e-84e8395d7189"
+      ],
+      "predicted_insufficient": false,
+      "scores": {
+        "retrieval_hit_rate": 0.0,
+        "retrieval_mrr": 0.0,
+        "retrieval_ndcg": 0.0,
+        "retrieval_precision": 0.0,
+        "retrieval_latency_ms": 6278.637840000101,
+        "generation_bleu": 0.0,
+        "generation_rouge_l": 0.047337278106508875,
+        "generation_token_f1": 0.10362694300518135,
+        "generation_citation_accuracy": 1.0,
+        "generation_refusal_correct": 1,
+        "generation_answer_tokens": 306.0,
+        "generation_latency_ms": 4185.7585600000675
+      }
+    }
+  ]
+}

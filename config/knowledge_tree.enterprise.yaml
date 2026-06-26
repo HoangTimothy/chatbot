@@ -1,0 +1,31 @@
+root:
+  name: Enterprise Knowledge Base
+  children:
+    - name: Company Information
+      children:
+        - name: Company Introduction
+        - name: Contact Information
+        - name: Operating Standards
+
+    - name: Products and Manuals
+      children:
+        - name: Product Specifications
+        - name: Installation Guides
+        - name: Maintenance Guides
+        - name: Troubleshooting
+
+    - name: Policies and SOPs
+      children:
+        - name: Human Resources
+        - name: Finance
+        - name: Procurement
+        - name: Sales
+        - name: Customer Support
+
+    - name: Department Scenarios
+      children:
+        - name: Sales Scenarios
+        - name: Procurement Scenarios
+        - name: Technical Support Scenarios
+        - name: Operations Scenarios
+

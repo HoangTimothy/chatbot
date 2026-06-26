@@ -1,0 +1,2 @@
+"""Ports for infrastructure adapters."""
+

@@ -1,2 +1,0 @@
-"""Hierarchical domain routing package."""
-

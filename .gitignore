@@ -1,0 +1,44 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+.next/
+dist/
+coverage/
+
+# Local documents and generated indexes
+data/raw_documents/*
+!data/raw_documents/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/indexes/*
+!data/indexes/.gitkeep
+storage/*
+!storage/.gitkeep
+
+# Logs and local OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Scratch and database files
+scratch/
+*.db
+
+

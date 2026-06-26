@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise RAG Platform</title>
+  
+  <!-- Modern Typography and Iconography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="dark-mode">
+  
+  <!-- --- LOGIN OVERLAY --- -->
+  <div id="login-overlay" class="auth-overlay active">
+    <div class="glass-card auth-card animate-scale-up">
+      <div class="auth-header">
+        <div class="logo-badge">
+          <i data-lucide="brain-circuit" class="logo-icon"></i>
+        </div>
+        <h2>Enterprise RAG</h2>
+        <p>Sign in to your corporate workspace</p>
+      </div>
+      <form id="login-form" class="auth-form">
+        <div class="input-group">
+          <label for="email"><i data-lucide="mail"></i> Email Address</label>
+          <input type="email" id="email" required placeholder="name@company.com" autocomplete="email">
+        </div>
+        <div class="input-group">
+          <label for="password"><i data-lucide="lock"></i> Password</label>
+          <input type="password" id="password" required placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <div id="login-error" class="error-banner hidden">
+          <i data-lucide="alert-triangle"></i>
+          <span id="error-message">Invalid email or password</span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          <span>Sign In</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- --- WORKSPACE SELECTOR OVERLAY --- -->
+  <div id="workspace-overlay" class="auth-overlay hidden">
+    <div class="glass-card auth-card animate-scale-up">
+      <div class="auth-header">
+        <div class="logo-badge">
+          <i data-lucide="layers" class="logo-icon"></i>
+        </div>
+        <h2>Select Workspace</h2>
+        <p>Choose your company tenant context</p>
+      </div>
+      <div id="workspace-list" class="workspace-selection-container">
+        <!-- Rendered dynamically -->
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- MAIN PLATFORM CONTAINER --- -->
+  <div id="app-container" class="app-layout hidden">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar-container glass-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <i data-lucide="brain-circuit" class="brand-icon"></i>
+          <span>RAG Core</span>
+        </div>
+        <div id="active-workspace-badge" class="workspace-badge-pill">
+          <i data-lucide="layout"></i>
+          <span id="active-workspace-name">Default</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="#" class="nav-item active" data-view="chat-view">
+              <i data-lucide="message-square"></i>
+              <span>Grounded Chat</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" data-view="documents-view">
+              <i data-lucide="file-text"></i>
+              <span>Documents</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item admin-only hidden" data-view="admin-view">
+              <i data-lucide="shield-check"></i>
+              <span>Admin Console</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" data-view="settings-view">
+              <i data-lucide="settings"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-profile-widget">
+          <div class="avatar-badge" id="user-avatar">AD</div>
+          <div class="profile-details">
+            <span class="user-fullname" id="user-name">Admin User</span>
+            <span class="user-role-badge" id="user-role">ADMIN</span>
+          </div>
+          <button id="logout-btn" title="Sign Out" class="logout-icon-btn">
+            <i data-lucide="log-out"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT VIEWS VIEWPORT -->
+    <main class="main-viewport">
+      
+      <!-- VIEW: CHAT & RETRIEVAL -->
+      <section id="chat-view" class="view-panel active">
+        <div class="chat-viewport-layout">
+          <!-- Session List (Left Panel) -->
+          <div class="chat-sessions-sidebar glass-panel">
+            <div class="session-list-header">
+              <h3>Conversations</h3>
+              <button id="new-chat-btn" class="btn btn-secondary btn-icon-only" title="New Conversation">
+                <i data-lucide="plus"></i>
+              </button>
+            </div>
+            <div id="session-items-list" class="session-items-scroll">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+          <!-- Current Conversation Stream (Right Panel) -->
+          <div class="chat-stream-container glass-panel">
+            <div id="chat-stream-header" class="chat-header-bar">
+              <div class="chat-header-details">
+                <h3 id="current-chat-title">New Conversation</h3>
+                <p id="chat-routing-info"><i data-lucide="navigation"></i> Routing: ROOT search branch</p>
+              </div>
+            </div>
+            <div id="chat-messages-container" class="messages-scroll-area">
+              <div class="welcome-message-card">
+                <i data-lucide="message-square" class="welcome-icon"></i>
+                <h2>Ask anything grounded in your docs</h2>
+                <p>Upload files to your workspace, then query them here. All answers are strictly grounded, trace-verified, and citation-backed.</p>
+              </div>
+            </div>
+            <div class="chat-input-bar">
+              <div class="chat-options-bar">
+                <label class="hyde-toggle-container">
+                  <input type="checkbox" id="hyde-toggle-chk" class="hyde-checkbox">
+                  <span>
+                    <i data-lucide="sparkles" style="width: 13px; height: 13px; color: var(--accent-primary); vertical-align: middle;"></i>
+                    Use HyDE Query Expansion
+                  </span>
+                </label>
+              </div>
+              <form id="chat-input-form" class="chat-form-pill">
+                <input type="text" id="chat-query-input" placeholder="Ask a question..." autocomplete="off">
+                <button type="submit" class="btn btn-primary btn-round">
+                  <i data-lucide="send"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: DOCUMENTS DASHBOARD -->
+      <section id="documents-view" class="view-panel">
+        <div class="panel-header">
+          <h2>Document Workspace Dashboard</h2>
+          <p>Upload files to index them in the vector database and keyword store.</p>
+        </div>
+        
+        <!-- Documents Dashboard Two-Column Layout -->
+        <div class="documents-dashboard-layout">
+          <!-- Left Column: Uploaders -->
+          <div class="documents-upload-column">
+            <!-- Dropzone File Upload -->
+            <div id="upload-dropzone" class="glass-card upload-dropzone-box">
+              <input type="file" id="file-uploader-input" multiple class="hidden">
+              <i data-lucide="cloud-upload" class="upload-icon"></i>
+              <h3>Drag & Drop files here</h3>
+              <p class="browse-link-text">or <span class="browse-link">browse files</span></p>
+              <p class="file-rules">PDF, DOCX, XLSX, CSV, TXT, HTML (Max 20MB)</p>
+              <div id="upload-status-indicator" class="hidden">
+                <div class="spinner-small"></div>
+                <span id="upload-status-text">Uploading...</span>
+              </div>
+            </div>
+
+            <!-- Google Drive Import Form -->
+            <div class="glass-card drive-import-box">
+              <div class="drive-import-title-row">
+                <i data-lucide="cloud-lightning"></i>
+                <h3>Google Drive Import</h3>
+              </div>
+              <p class="drive-import-desc">Paste a publicly shared Google Doc or Sheet link below.</p>
+              <form id="drive-import-form" class="drive-import-form">
+                <input type="url" id="drive-url-input" required placeholder="https://docs.google.com/document/d/...">
+                <button type="submit" class="btn btn-primary btn-block">
+                  <i data-lucide="download"></i>
+                  <span>Import Link</span>
+                </button>
+              </form>
+              <div id="drive-import-status" class="hidden" style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--status-processing); margin-top: 10px;">
+                <div class="spinner-small"></div>
+                <span id="drive-import-status-text">Importing and indexing document...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Documents Table -->
+          <div class="documents-table-column">
+            <div class="table-container-card glass-panel">
+              <div class="table-header">
+                <h3>Knowledge Repository</h3>
+                <button id="refresh-docs-btn" class="btn btn-icon-label">
+                  <i data-lucide="rotate-cw"></i>
+                  <span>Refresh</span>
+                </button>
+              </div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Document Name</th>
+                    <th>Size</th>
+                    <th>Content Type</th>
+                    <th>Indexing Status</th>
+                    <th>Added Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="documents-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: ADMIN CONSOLE -->
+      <section id="admin-view" class="view-panel">
+        <div class="panel-header">
+          <h2>Admin Control & Audit Trails</h2>
+          <p>Inspect backgrounds jobs, analyze retrieval traces, and review audit logs.</p>
+        </div>
+        
+        <!-- Admin tabs subnavigation -->
+        <div class="tab-subnav-container">
+          <button class="tab-nav active" data-tab="jobs-tab"><i data-lucide="play"></i> Ingestion Jobs</button>
+          <button class="tab-nav" data-tab="traces-tab"><i data-lucide="history"></i> Retrieval Traces</button>
+          <button class="tab-nav" data-tab="audit-tab"><i data-lucide="file-key"></i> Security Audit Logs</button>
+        </div>
+
+        <!-- Tab: Ingestion Jobs -->
+        <div id="jobs-tab" class="tab-panel active">
+          <div class="table-container-card glass-panel">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Job ID</th>
+                  <th>Target Document</th>
+                  <th>Status</th>
+                  <th>Details/Error</th>
+                  <th>Started Date</th>
+                </tr>
+              </thead>
+              <tbody id="admin-jobs-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab: Retrieval Traces -->
+        <div id="traces-tab" class="tab-panel">
+          <div class="table-container-card glass-panel">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Trace ID</th>
+                  <th>Query Prompt</th>
+                  <th>Routed Branch</th>
+                  <th>Query Tokens</th>
+                  <th>Total Tokens</th>
+                  <th>Date</th>
+                  <th>Inspection</th>
+                </tr>
+              </thead>
+              <tbody id="admin-traces-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab: Audit Logs -->
+        <div id="audit-tab" class="tab-panel">
+          <div class="table-container-card glass-panel">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Log ID</th>
+                  <th>Authorized User</th>
+                  <th>Action String</th>
+                  <th>Target Object</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="admin-audit-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: SETTINGS -->
+      <section id="settings-view" class="view-panel">
+        <div class="panel-header">
+          <h2>Settings</h2>
+          <p>Adjust your UI theme and preferences.</p>
+        </div>
+        <div class="glass-card settings-card">
+          <div class="settings-row">
+            <div class="settings-desc">
+              <h4>Dark Mode theme</h4>
+              <p>Toggle between dark and light workspace theme interface.</p>
+            </div>
+            <div class="toggle-widget">
+              <input type="checkbox" id="theme-toggle-chk" checked class="hidden-chk">
+              <label for="theme-toggle-chk" class="toggle-switch-slider"></label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- --- MODAL: RETRIEVAL TRACE VIEW --- -->
+  <div id="trace-modal" class="modal-overlay hidden">
+    <div class="glass-card modal-card animate-scale-up">
+      <div class="modal-header">
+        <h3><i data-lucide="search-code"></i> Deep Retrieval Trace Analyzer</h3>
+        <button id="close-trace-modal" class="btn-close-icon"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body-scroll">
+        <div class="trace-overview-grid">
+          <div class="trace-meta-item">
+            <span class="meta-label">Routing Decisions</span>
+            <span class="meta-val badge-branch" id="trace-modal-branch">technical/specs</span>
+          </div>
+          <div class="trace-meta-item">
+            <span class="meta-label">Est. Query Tokens</span>
+            <span class="meta-val" id="trace-modal-tokens">15</span>
+          </div>
+          <div class="trace-meta-item">
+            <span class="meta-label">Response Tokens</span>
+            <span class="meta-val" id="trace-modal-response-tokens">0</span>
+          </div>
+          <div class="trace-meta-item">
+            <span class="meta-label">Context Tokens</span>
+            <span class="meta-val" id="trace-modal-context-tokens">0</span>
+          </div>
+          <div class="trace-meta-item">
+            <span class="meta-label">Total Tokens</span>
+            <span class="meta-val" id="trace-modal-total-tokens">0</span>
+          </div>
+          <div id="trace-modal-hyde-section" class="trace-meta-item hidden" style="grid-column: span 2; margin-top: 10px;">
+            <span class="meta-label" style="display: flex; align-items: center; gap: 4px;">
+              <i data-lucide="sparkles" style="width: 13px; height: 13px; color: var(--accent-primary);"></i>
+              HyDE Hypothetical Document
+            </span>
+            <div id="trace-modal-hyde-text" class="glass-card" style="padding: 12px; font-size: 13px; font-family: inherit; line-height: 1.5; color: var(--text-main); background: rgba(15, 23, 42, 0.4); border: 1px solid var(--border-color); border-radius: 8px; margin-top: 6px; white-space: pre-wrap;"></div>
+          </div>
+        </div>
+
+        <h4 class="section-divider-title" style="margin-top: 20px;">RAG Retrieval Pipeline Status</h4>
+        <div class="pipeline-status-container" id="trace-modal-pipeline-status" style="margin-bottom: 20px;">
+          <!-- Populated dynamically -->
+        </div>
+
+        <h4 class="section-divider-title">Reranked Candidate List (Top Matches)</h4>
+        <div id="trace-modal-candidates" class="trace-candidates-scroll">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- MODAL: CITATION DETAIL CAROUSEL --- -->
+  <div id="citation-modal" class="modal-overlay hidden">
+    <div class="glass-card modal-card animate-scale-up">
+      <div class="modal-header">
+        <h3 id="citation-modal-title">Source Chunk Segment</h3>
+        <button id="close-citation-modal" class="btn-close-icon"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="citation-context-card">
+          <p id="citation-modal-text"></p>
+        </div>
+        <div class="citation-meta-footer">
+          <span id="citation-modal-branch-badge" class="badge-branch">ROOT</span>
+          <span id="citation-modal-doc-ref">doc.txt</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- MODAL: CONFIRM ACTION --- -->
+  <div id="confirm-modal" class="modal-overlay hidden">
+    <div class="glass-card modal-card animate-scale-up" style="max-width: 450px;">
+      <div class="modal-header">
+        <h3>Confirm Action</h3>
+        <button id="close-confirm-modal" class="btn-close-icon"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-modal-message" style="line-height: 1.5; font-size: 14px; margin-bottom: 20px;">Are you sure you want to proceed?</p>
+        <div class="confirm-modal-actions">
+          <button id="confirm-cancel-btn" class="btn btn-secondary">Cancel</button>
+          <button id="confirm-ok-btn" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/app.js?v=2"></script>
+</body>
+</html>

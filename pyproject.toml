@@ -1,0 +1,24 @@
+[project]
+name = "enterprise-rag-platform"
+version = "0.1.0"
+description = "Flow-only scaffold for a fixed enterprise RAG platform"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[tool.pytest.ini_options]
+pythonpath = [
+    ".",
+    "apps/api",
+    "apps/worker",
+    "packages/rag_core",
+    "packages/shared",
+]
+

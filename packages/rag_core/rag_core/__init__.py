@@ -1,0 +1,2 @@
+"""RAG core package placeholder."""
+
